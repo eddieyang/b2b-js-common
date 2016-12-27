@@ -7,7 +7,7 @@
 exports.__esModule = true;
 exports.reducer = undefined;
 
-var _reducer = require('./reducer');
+var _reducer = require('./reducers');
 var _reduce2 = _interopRequireDefault(_reducer);
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { "default": obj };
