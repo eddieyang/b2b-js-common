@@ -4,4 +4,4 @@
 // export IM from './libs/im';
 // export { zh_cn } from './langs';
 
-export reducer from './reducers';
+export { default } from './reducers';
