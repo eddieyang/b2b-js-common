@@ -8,7 +8,7 @@ export default class IM {
   }
 
   connect(userId, callback) {
-    TcgWebSocket.WebMessageBridge().connect(userId, `${baseDomain}/rtmsg`, callback);
+    TcgWebSocket.WebMessageBridge().connect(userId, `/rtmsg`, callback);
   }
 
   subscribeDrawResult(gameCode, callback, afterSubscribeCallback) {

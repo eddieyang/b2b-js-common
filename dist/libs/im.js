@@ -26,7 +26,7 @@ var IM = function () {
   _createClass(IM, [{
     key: 'connect',
     value: function connect(userId, callback) {
-      _imCommons2.default.WebMessageBridge().connect(userId, _common.baseDomain + '/rtmsg', callback);
+      _imCommons2.default.WebMessageBridge().connect(userId, '/rtmsg', callback);
     }
   }, {
     key: 'subscribeDrawResult',
