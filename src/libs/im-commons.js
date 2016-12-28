@@ -1,5 +1,5 @@
-import SockJS from './bower-sockjs-client/sockjs';
-import './stomp-websocket';
+import SockJS from 'bower-sockjs-client';
+import 'stomp-websocket';
 
 const websocket_debug = false;
 
