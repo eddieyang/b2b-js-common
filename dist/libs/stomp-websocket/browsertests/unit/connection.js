@@ -5,8 +5,7 @@ module("Stomp Connection");
 test("Connect to an invalid Stomp server", function () {
 
   var client = Stomp.client(TEST.badUrl);
-  client.connect("foo", "bar", function () {
-  }, function () {
+  client.connect("foo", "bar", function () {}, function () {
     start();
   });
   stop(TEST.timeout);

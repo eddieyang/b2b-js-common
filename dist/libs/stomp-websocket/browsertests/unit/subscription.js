@@ -30,8 +30,8 @@ test("Should receive messages sent to destination after subscribing", 1, functio
 
 test("Should no longer receive messages after unsubscribing to destination", 1, function () {
   var msg1 = 'Calling all cars!',
-    subscription1 = null,
-    subscription2 = null;
+      subscription1 = null,
+      subscription2 = null;
 
   client.connect(TEST.login, TEST.password, function () {
     subscription1 = client.subscribe(TEST.destination, function (frame) {

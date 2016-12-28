@@ -1,4 +1,4 @@
-import { FETCH_PLAY_MENU, GAME_SELECTED } from "../src/actions/index";
+import { FETCH_PLAY_MENU, GAME_SELECTED } from "../actions/index";
 
 export default function (state = {}, action) {
   switch (action.type) {

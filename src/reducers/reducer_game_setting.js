@@ -1,4 +1,4 @@
-import { FETCH_GAME_SETTING } from "../src/actions/index";
+import { FETCH_GAME_SETTING } from "../actions/index";
 
 import _ from 'lodash-compat';
 

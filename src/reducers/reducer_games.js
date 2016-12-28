@@ -1,4 +1,4 @@
-import { FETCH_GAMES } from "../src/actions/index";
+import { FETCH_GAMES } from "../actions/index";
 
 const INIT_STATE = [];
 export default function (state = INIT_STATE, action) {

@@ -1,4 +1,4 @@
-import { PLAY_MENU_SELECTED } from "../src/actions/index";
+import { PLAY_MENU_SELECTED } from "../actions/index";
 export default function (state = {}, action) {
 
   switch (action.type) {

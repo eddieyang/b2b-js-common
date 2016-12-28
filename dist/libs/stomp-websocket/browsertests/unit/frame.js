@@ -35,8 +35,8 @@ test("unmarshall a RECEIVE frame", function () {
 
 test("unmarshall should not include the null byte in the body", function () {
   var body1 = 'Just the text please.',
-    body2 = 'And the newline\n',
-    msg = "MESSAGE\ndestination: /queue/test\nmessage-id: 123\n\n";
+      body2 = 'And the newline\n',
+      msg = "MESSAGE\ndestination: /queue/test\nmessage-id: 123\n\n";
 
   equals(Stomp.Frame.unmarshall(msg + body1 + '\0').frames[0].body, body1);
   equals(Stomp.Frame.unmarshall(msg + body2 + '\0').frames[0].body, body2);
@@ -44,7 +44,7 @@ test("unmarshall should not include the null byte in the body", function () {
 
 test("unmarshall should support colons (:) in header values", function () {
   var dest = 'foo:bar:baz',
-    msg = "MESSAGE\ndestination: " + dest + "\nmessage-id: 456\n\n\0";
+      msg = "MESSAGE\ndestination: " + dest + "\nmessage-id: 456\n\n\0";
 
   equals(Stomp.Frame.unmarshall(msg).frames[0].headers.destination, dest);
 });

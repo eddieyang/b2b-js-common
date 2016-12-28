@@ -32,18 +32,11 @@
   });
 
   test("connect(login, passcode, connectCallback, errorCallback)", function () {
-    checkArgs(client._parseConnect("jmesnil", "wombats", myConnectCallback, myErrorCallback), {
-      login: 'jmesnil',
-      passcode: 'wombats'
-    }, myConnectCallback, myErrorCallback);
+    checkArgs(client._parseConnect("jmesnil", "wombats", myConnectCallback, myErrorCallback), { login: 'jmesnil', passcode: 'wombats' }, myConnectCallback, myErrorCallback);
   });
 
   test("connect(login, passcode, connectCallback, errorCallback, vhost)", function () {
-    checkArgs(client._parseConnect("jmesnil", "wombats", myConnectCallback, myErrorCallback, "myvhost"), {
-      login: 'jmesnil',
-      passcode: 'wombats',
-      host: 'myvhost'
-    }, myConnectCallback, myErrorCallback);
+    checkArgs(client._parseConnect("jmesnil", "wombats", myConnectCallback, myErrorCallback, "myvhost"), { login: 'jmesnil', passcode: 'wombats', host: 'myvhost' }, myConnectCallback, myErrorCallback);
   });
 
   test("connect(headers, connectCallback)", function () {

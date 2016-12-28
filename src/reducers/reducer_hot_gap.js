@@ -1,4 +1,4 @@
-import { TOGGLE_GAP, TOGGLE_HOT, FETCH_HOT_GAP } from "../src/actions/index";
+import { TOGGLE_GAP, TOGGLE_HOT, FETCH_HOT_GAP } from "../actions/index";
 import _ from 'lodash-compat';
 
 const INIT_STATE = {

@@ -36,10 +36,10 @@
 
   Stomp.unmarshal = function (data) {
     var divider = data.search(/\n\n/),
-      headerLines = data.substring(0, divider).split('\n'),
-      command = headerLines.shift(),
-      headers = {},
-      body = '';
+        headerLines = data.substring(0, divider).split('\n'),
+        command = headerLines.shift(),
+        headers = {},
+        body = '';
 
     // Parse headers
     var line = idx = null;

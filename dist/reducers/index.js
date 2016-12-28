@@ -50,9 +50,7 @@ var _reducer_orders = require("./reducer_orders");
 
 var _reducer_orders2 = _interopRequireDefault(_reducer_orders);
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var rootReducer = (0, _redux.combineReducers)({
   games: _reducer_games2.default,

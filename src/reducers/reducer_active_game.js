@@ -1,4 +1,4 @@
-import { GAME_SELECTED, PRIZE_MODE_SELECTED } from "../src/actions/index";
+import { GAME_SELECTED, PRIZE_MODE_SELECTED } from "../actions/index";
 
 const INIT_STATE = {
   game: {},

@@ -18,4 +18,4 @@ exports.default = function () {
   return state;
 };
 
-var _index = require("../src/actions/index");
+var _index = require("../actions/index");

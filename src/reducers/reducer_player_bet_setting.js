@@ -1,4 +1,4 @@
-import { CHANGE_SERIES, CHANGE_BET_MODE, CHANGE_BET_MULTIPLE, CALCULATE_STAKES, PLAY_MENU_SELECTED, BET_FINISH } from "../src/actions/index";
+import { CHANGE_SERIES, CHANGE_BET_MODE, CHANGE_BET_MULTIPLE, CALCULATE_STAKES, PLAY_MENU_SELECTED, BET_FINISH } from "../actions/index";
 import StakesCalculator from '../utils/stakes_calculator';
 import { ballBoardConfig } from '../configs/ball_board_config';
 

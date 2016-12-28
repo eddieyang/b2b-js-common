@@ -11,11 +11,11 @@
 
 (function () {
   var Byte,
-    Client,
-    Frame,
-    Stomp,
-    __hasProp = {}.hasOwnProperty,
-    __slice = [].slice;
+      Client,
+      Frame,
+      Stomp,
+      __hasProp = {}.hasOwnProperty,
+      __slice = [].slice;
 
   Byte = {
     LF: '\x0A',
@@ -259,14 +259,14 @@
         return function (evt) {
           var arr, c, client, data, frame, messageID, onreceive, subscription, unmarshalledData, _i, _len, _ref, _results;
           data = typeof ArrayBuffer !== 'undefined' && evt.data instanceof ArrayBuffer ? (arr = new Uint8Array(evt.data), typeof _this.debug === "function" ? _this.debug("--- got data length: " + arr.length) : void 0, function () {
-              var _i, _len, _results;
-              _results = [];
-              for (_i = 0, _len = arr.length; _i < _len; _i++) {
-                c = arr[_i];
-                _results.push(String.fromCharCode(c));
-              }
-              return _results;
-            }().join('')) : evt.data;
+            var _i, _len, _results;
+            _results = [];
+            for (_i = 0, _len = arr.length; _i < _len; _i++) {
+              c = arr[_i];
+              _results.push(String.fromCharCode(c));
+            }
+            return _results;
+          }().join('')) : evt.data;
           _this.serverActivity = now();
           if (data === Byte.LF) {
             if (typeof _this.debug === "function") {

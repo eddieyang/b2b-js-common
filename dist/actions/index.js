@@ -35,9 +35,7 @@ var _numeral2 = _interopRequireDefault(_numeral);
 
 var _common = require('../common');
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var FETCH_GAMES = exports.FETCH_GAMES = 'FETCH_GAMES';
 var GAME_SELECTED = exports.GAME_SELECTED = 'GAME_SELECTED';
@@ -105,8 +103,8 @@ function fetchDraw(_ref) {
 
 function addDraw(_ref2) {
   var gameCode = _ref2.gameCode,
-    numero = _ref2.numero,
-    winningNumber = _ref2.winningNumber;
+      numero = _ref2.numero,
+      winningNumber = _ref2.winningNumber;
 
 
   return {
@@ -243,14 +241,14 @@ function betFinish() {
 
 function oneClickBet(_ref7) {
   var game = _ref7.game,
-    currentNumero = _ref7.currentNumero,
-    playMenu = _ref7.playMenu,
-    prizeModeId = _ref7.prizeModeId,
-    series = _ref7.series,
-    mode = _ref7.mode,
-    multiple = _ref7.multiple,
-    amount = _ref7.amount,
-    ballRows = _ref7.ballRows;
+      currentNumero = _ref7.currentNumero,
+      playMenu = _ref7.playMenu,
+      prizeModeId = _ref7.prizeModeId,
+      series = _ref7.series,
+      mode = _ref7.mode,
+      multiple = _ref7.multiple,
+      amount = _ref7.amount,
+      ballRows = _ref7.ballRows;
 
 
   var gameId = game.gameId;
@@ -291,12 +289,12 @@ function oneClickBet(_ref7) {
 // TODO ssc or 11x5 球號顯示格式
 function addToShoppingCart(_ref8) {
   var series = _ref8.series,
-    playMenu = _ref8.playMenu,
-    mode = _ref8.mode,
-    multiple = _ref8.multiple,
-    ballRows = _ref8.ballRows,
-    stakes = _ref8.stakes,
-    amount = _ref8.amount;
+      playMenu = _ref8.playMenu,
+      mode = _ref8.mode,
+      multiple = _ref8.multiple,
+      ballRows = _ref8.ballRows,
+      stakes = _ref8.stakes,
+      amount = _ref8.amount;
 
 
   var playId = playMenu.playId;
@@ -311,14 +309,7 @@ function addToShoppingCart(_ref8) {
   }).join(' | ');
 
   var orderItem = {
-    playMenu: playMenu,
-    mode: mode,
-    multiple: multiple,
-    ballRows: ballRows,
-    stakes: stakes,
-    amount: amount,
-    ballText: ballText,
-    bettingSlipString: bettingSlipString
+    playMenu: playMenu, mode: mode, multiple: multiple, ballRows: ballRows, stakes: stakes, amount: amount, ballText: ballText, bettingSlipString: bettingSlipString
   };
 
   return {

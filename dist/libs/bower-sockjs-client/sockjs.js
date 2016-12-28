@@ -1,10 +1,6 @@
 "use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /* SockJS client, version 0.3.4, http://sockjs.org, MIT License
 
@@ -34,12 +30,12 @@ var JSON;
 JSON || (JSON = {}), function () {
   function str(a, b) {
     var c,
-      d,
-      e,
-      f,
-      g = gap,
-      h,
-      i = b[a];
+        d,
+        e,
+        f,
+        g = gap,
+        h,
+        i = b[a];
     i && (typeof i === "undefined" ? "undefined" : _typeof(i)) == "object" && typeof i.toJSON == "function" && (i = i.toJSON(a)), typeof rep == "function" && (i = rep.call(b, a, i));
     switch (typeof i === "undefined" ? "undefined" : _typeof(i)) {
       case "string":
@@ -56,8 +52,7 @@ JSON || (JSON = {}), function () {
           f = i.length;
           for (c = 0; c < f; c += 1) {
             h[c] = str(c, i) || "null";
-          }
-          e = h.length === 0 ? "[]" : gap ? "[\n" + gap + h.join(",\n" + gap) + "\n" + g + "]" : "[" + h.join(",") + "]", gap = g;
+          }e = h.length === 0 ? "[]" : gap ? "[\n" + gap + h.join(",\n" + gap) + "\n" + g + "]" : "[" + h.join(",") + "]", gap = g;
           return e;
         }
         if (rep && (typeof rep === "undefined" ? "undefined" : _typeof(rep)) == "object") {
@@ -67,8 +62,7 @@ JSON || (JSON = {}), function () {
           }
         } else for (d in i) {
           Object.prototype.hasOwnProperty.call(i, d) && (e = str(d, i), e && h.push(quote(d) + (gap ? ": " : ":") + e));
-        }
-        e = h.length === 0 ? "{}" : gap ? "{\n" + gap + h.join(",\n" + gap) + "\n" + g + "}" : "{" + h.join(",") + "}", gap = g;
+        }e = h.length === 0 ? "{}" : gap ? "{\n" + gap + h.join(",\n" + gap) + "\n" + g + "}" : "{" + h.join(",") + "}", gap = g;
         return e;
     }
   }
@@ -76,9 +70,9 @@ JSON || (JSON = {}), function () {
   function quote(a) {
     escapable.lastIndex = 0;
     return escapable.test(a) ? '"' + a.replace(escapable, function (a) {
-        var b = meta[a];
-        return typeof b == "string" ? b : "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4);
-      }) + '"' : '"' + a + '"';
+      var b = meta[a];
+      return typeof b == "string" ? b : "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4);
+    }) + '"' : '"' + a + '"';
   }
 
   function f(a) {
@@ -91,19 +85,19 @@ JSON || (JSON = {}), function () {
     return this.valueOf();
   });
   var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
-    escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
-    gap,
-    indent,
-    meta = {
-      "\b": "\\b",
-      "\t": "\\t",
-      "\n": "\\n",
-      "\f": "\\f",
-      "\r": "\\r",
-      '"': '\\"',
-      "\\": "\\\\"
-    },
-    rep;
+      escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+      gap,
+      indent,
+      meta = {
+    "\b": "\\b",
+    "\t": "\\t",
+    "\n": "\\n",
+    "\f": "\\f",
+    "\r": "\\r",
+    '"': '\\"',
+    "\\": "\\\\"
+  },
+      rep;
   typeof JSON.stringify != "function" && (JSON.stringify = function (a, b, c) {
     var d;
     gap = "", indent = "";
@@ -116,12 +110,11 @@ JSON || (JSON = {}), function () {
   }), typeof JSON.parse != "function" && (JSON.parse = function (text, reviver) {
     function walk(a, b) {
       var c,
-        d,
-        e = a[b];
+          d,
+          e = a[b];
       if (e && (typeof e === "undefined" ? "undefined" : _typeof(e)) == "object") for (c in e) {
         Object.prototype.hasOwnProperty.call(e, c) && (d = walk(e, c), d !== undefined ? e[c] = d : delete e[c]);
-      }
-      return reviver.call(a, b, e);
+      }return reviver.call(a, b, e);
     }
 
     var j;
@@ -155,8 +148,7 @@ SockJS = function () {
   /* Simplified implementation of DOM2 EventTarget.
    *   http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-EventTarget
    */
-  var REventTarget = function REventTarget() {
-  };
+  var REventTarget = function REventTarget() {};
   REventTarget.prototype.addEventListener = function (eventType, listener) {
     if (!this._listeners) {
       this._listeners = {};
@@ -307,7 +299,7 @@ SockJS = function () {
   utils.random_string = function (length, max) {
     max = max || random_string_chars.length;
     var i,
-      ret = [];
+        ret = [];
     for (i = 0; i < length; i++) {
       ret.push(random_string_chars.substr(Math.floor(Math.random() * max), 1));
     }
@@ -449,8 +441,8 @@ SockJS = function () {
 
   // Via: https://gist.github.com/1133122/2121c601c5549155483f50be3da5305e83b8c5df
   utils.isArray = Array.isArray || function (value) {
-      return {}.toString.call(value).indexOf('Array') >= 0;
-    };
+    return {}.toString.call(value).indexOf('Array') >= 0;
+  };
 
   utils.delay = function (t, fun) {
     if (typeof t === 'function') {
@@ -463,54 +455,54 @@ SockJS = function () {
   // Chars worth escaping, as defined by Douglas Crockford:
   //   https://github.com/douglascrockford/JSON-js/blob/47a9882cddeb1e8529e07af9736218075372b8ac/json2.js#L196
   var json_escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
-    json_lookup = {
-      "\0": "\\u0000", "\x01": "\\u0001", "\x02": "\\u0002", "\x03": "\\u0003",
-      "\x04": "\\u0004", "\x05": "\\u0005", "\x06": "\\u0006", "\x07": "\\u0007",
-      "\b": "\\b", "\t": "\\t", "\n": "\\n", "\x0B": "\\u000b", "\f": "\\f", "\r": "\\r",
-      "\x0E": "\\u000e", "\x0F": "\\u000f", "\x10": "\\u0010", "\x11": "\\u0011",
-      "\x12": "\\u0012", "\x13": "\\u0013", "\x14": "\\u0014", "\x15": "\\u0015",
-      "\x16": "\\u0016", "\x17": "\\u0017", "\x18": "\\u0018", "\x19": "\\u0019",
-      "\x1A": "\\u001a", "\x1B": "\\u001b", "\x1C": "\\u001c", "\x1D": "\\u001d",
-      "\x1E": "\\u001e", "\x1F": "\\u001f", "\"": "\\\"", "\\": "\\\\",
-      "\x7F": "\\u007f", "\x80": "\\u0080", "\x81": "\\u0081", "\x82": "\\u0082",
-      "\x83": "\\u0083", "\x84": "\\u0084", "\x85": "\\u0085", "\x86": "\\u0086",
-      "\x87": "\\u0087", "\x88": "\\u0088", "\x89": "\\u0089", "\x8A": "\\u008a",
-      "\x8B": "\\u008b", "\x8C": "\\u008c", "\x8D": "\\u008d", "\x8E": "\\u008e",
-      "\x8F": "\\u008f", "\x90": "\\u0090", "\x91": "\\u0091", "\x92": "\\u0092",
-      "\x93": "\\u0093", "\x94": "\\u0094", "\x95": "\\u0095", "\x96": "\\u0096",
-      "\x97": "\\u0097", "\x98": "\\u0098", "\x99": "\\u0099", "\x9A": "\\u009a",
-      "\x9B": "\\u009b", "\x9C": "\\u009c", "\x9D": "\\u009d", "\x9E": "\\u009e",
-      "\x9F": "\\u009f", "\xAD": "\\u00ad", "\u0600": "\\u0600", "\u0601": "\\u0601",
-      "\u0602": "\\u0602", "\u0603": "\\u0603", "\u0604": "\\u0604", "\u070F": "\\u070f",
-      "\u17B4": "\\u17b4", "\u17B5": "\\u17b5", "\u200C": "\\u200c", "\u200D": "\\u200d",
-      "\u200E": "\\u200e", "\u200F": "\\u200f", "\u2028": "\\u2028", "\u2029": "\\u2029",
-      "\u202A": "\\u202a", "\u202B": "\\u202b", "\u202C": "\\u202c", "\u202D": "\\u202d",
-      "\u202E": "\\u202e", "\u202F": "\\u202f", "\u2060": "\\u2060", "\u2061": "\\u2061",
-      "\u2062": "\\u2062", "\u2063": "\\u2063", "\u2064": "\\u2064", "\u2065": "\\u2065",
-      "\u2066": "\\u2066", "\u2067": "\\u2067", "\u2068": "\\u2068", "\u2069": "\\u2069",
-      "\u206A": "\\u206a", "\u206B": "\\u206b", "\u206C": "\\u206c", "\u206D": "\\u206d",
-      "\u206E": "\\u206e", "\u206F": "\\u206f", "\uFEFF": "\\ufeff", "\uFFF0": "\\ufff0",
-      "\uFFF1": "\\ufff1", "\uFFF2": "\\ufff2", "\uFFF3": "\\ufff3", "\uFFF4": "\\ufff4",
-      "\uFFF5": "\\ufff5", "\uFFF6": "\\ufff6", "\uFFF7": "\\ufff7", "\uFFF8": "\\ufff8",
-      "\uFFF9": "\\ufff9", "\uFFFA": "\\ufffa", "\uFFFB": "\\ufffb", "\uFFFC": "\\ufffc",
-      "\uFFFD": "\\ufffd", "\uFFFE": "\\ufffe", "\uFFFF": "\\uffff"
-    };
+      json_lookup = {
+    "\0": "\\u0000", "\x01": "\\u0001", "\x02": "\\u0002", "\x03": "\\u0003",
+    "\x04": "\\u0004", "\x05": "\\u0005", "\x06": "\\u0006", "\x07": "\\u0007",
+    "\b": "\\b", "\t": "\\t", "\n": "\\n", "\x0B": "\\u000b", "\f": "\\f", "\r": "\\r",
+    "\x0E": "\\u000e", "\x0F": "\\u000f", "\x10": "\\u0010", "\x11": "\\u0011",
+    "\x12": "\\u0012", "\x13": "\\u0013", "\x14": "\\u0014", "\x15": "\\u0015",
+    "\x16": "\\u0016", "\x17": "\\u0017", "\x18": "\\u0018", "\x19": "\\u0019",
+    "\x1A": "\\u001a", "\x1B": "\\u001b", "\x1C": "\\u001c", "\x1D": "\\u001d",
+    "\x1E": "\\u001e", "\x1F": "\\u001f", "\"": "\\\"", "\\": "\\\\",
+    "\x7F": "\\u007f", "\x80": "\\u0080", "\x81": "\\u0081", "\x82": "\\u0082",
+    "\x83": "\\u0083", "\x84": "\\u0084", "\x85": "\\u0085", "\x86": "\\u0086",
+    "\x87": "\\u0087", "\x88": "\\u0088", "\x89": "\\u0089", "\x8A": "\\u008a",
+    "\x8B": "\\u008b", "\x8C": "\\u008c", "\x8D": "\\u008d", "\x8E": "\\u008e",
+    "\x8F": "\\u008f", "\x90": "\\u0090", "\x91": "\\u0091", "\x92": "\\u0092",
+    "\x93": "\\u0093", "\x94": "\\u0094", "\x95": "\\u0095", "\x96": "\\u0096",
+    "\x97": "\\u0097", "\x98": "\\u0098", "\x99": "\\u0099", "\x9A": "\\u009a",
+    "\x9B": "\\u009b", "\x9C": "\\u009c", "\x9D": "\\u009d", "\x9E": "\\u009e",
+    "\x9F": "\\u009f", "\xAD": "\\u00ad", "\u0600": "\\u0600", "\u0601": "\\u0601",
+    "\u0602": "\\u0602", "\u0603": "\\u0603", "\u0604": "\\u0604", "\u070F": "\\u070f",
+    "\u17B4": "\\u17b4", "\u17B5": "\\u17b5", "\u200C": "\\u200c", "\u200D": "\\u200d",
+    "\u200E": "\\u200e", "\u200F": "\\u200f", "\u2028": "\\u2028", "\u2029": "\\u2029",
+    "\u202A": "\\u202a", "\u202B": "\\u202b", "\u202C": "\\u202c", "\u202D": "\\u202d",
+    "\u202E": "\\u202e", "\u202F": "\\u202f", "\u2060": "\\u2060", "\u2061": "\\u2061",
+    "\u2062": "\\u2062", "\u2063": "\\u2063", "\u2064": "\\u2064", "\u2065": "\\u2065",
+    "\u2066": "\\u2066", "\u2067": "\\u2067", "\u2068": "\\u2068", "\u2069": "\\u2069",
+    "\u206A": "\\u206a", "\u206B": "\\u206b", "\u206C": "\\u206c", "\u206D": "\\u206d",
+    "\u206E": "\\u206e", "\u206F": "\\u206f", "\uFEFF": "\\ufeff", "\uFFF0": "\\ufff0",
+    "\uFFF1": "\\ufff1", "\uFFF2": "\\ufff2", "\uFFF3": "\\ufff3", "\uFFF4": "\\ufff4",
+    "\uFFF5": "\\ufff5", "\uFFF6": "\\ufff6", "\uFFF7": "\\ufff7", "\uFFF8": "\\ufff8",
+    "\uFFF9": "\\ufff9", "\uFFFA": "\\ufffa", "\uFFFB": "\\ufffb", "\uFFFC": "\\ufffc",
+    "\uFFFD": "\\ufffd", "\uFFFE": "\\ufffe", "\uFFFF": "\\uffff"
+  };
 
   // Some extra characters that Chrome gets wrong, and substitutes with
   // something else on the wire.
   var extra_escapable = /[\x00-\x1f\ud800-\udfff\ufffe\uffff\u0300-\u0333\u033d-\u0346\u034a-\u034c\u0350-\u0352\u0357-\u0358\u035c-\u0362\u0374\u037e\u0387\u0591-\u05af\u05c4\u0610-\u0617\u0653-\u0654\u0657-\u065b\u065d-\u065e\u06df-\u06e2\u06eb-\u06ec\u0730\u0732-\u0733\u0735-\u0736\u073a\u073d\u073f-\u0741\u0743\u0745\u0747\u07eb-\u07f1\u0951\u0958-\u095f\u09dc-\u09dd\u09df\u0a33\u0a36\u0a59-\u0a5b\u0a5e\u0b5c-\u0b5d\u0e38-\u0e39\u0f43\u0f4d\u0f52\u0f57\u0f5c\u0f69\u0f72-\u0f76\u0f78\u0f80-\u0f83\u0f93\u0f9d\u0fa2\u0fa7\u0fac\u0fb9\u1939-\u193a\u1a17\u1b6b\u1cda-\u1cdb\u1dc0-\u1dcf\u1dfc\u1dfe\u1f71\u1f73\u1f75\u1f77\u1f79\u1f7b\u1f7d\u1fbb\u1fbe\u1fc9\u1fcb\u1fd3\u1fdb\u1fe3\u1feb\u1fee-\u1fef\u1ff9\u1ffb\u1ffd\u2000-\u2001\u20d0-\u20d1\u20d4-\u20d7\u20e7-\u20e9\u2126\u212a-\u212b\u2329-\u232a\u2adc\u302b-\u302c\uaab2-\uaab3\uf900-\ufa0d\ufa10\ufa12\ufa15-\ufa1e\ufa20\ufa22\ufa25-\ufa26\ufa2a-\ufa2d\ufa30-\ufa6d\ufa70-\ufad9\ufb1d\ufb1f\ufb2a-\ufb36\ufb38-\ufb3c\ufb3e\ufb40-\ufb41\ufb43-\ufb44\ufb46-\ufb4e\ufff0-\uffff]/g,
-    extra_lookup;
+      extra_lookup;
 
   // JSON Quote string. Use native implementation when possible.
   var JSONQuote = JSON && JSON.stringify || function (string) {
-      json_escapable.lastIndex = 0;
-      if (json_escapable.test(string)) {
-        string = string.replace(json_escapable, function (a) {
-          return json_lookup[a];
-        });
-      }
-      return '"' + string + '"';
-    };
+    json_escapable.lastIndex = 0;
+    if (json_escapable.test(string)) {
+      string = string.replace(json_escapable, function (a) {
+        return json_lookup[a];
+      });
+    }
+    return '"' + string + '"';
+  };
 
   // This may be quite slow, so let's delay until user actually uses bad
   // characters.
@@ -563,7 +555,7 @@ SockJS = function () {
 
   utils.detectProtocols = function (probed, protocols_whitelist, info) {
     var pe = {},
-      protocols = [];
+        protocols = [];
     if (!protocols_whitelist) protocols_whitelist = _all_protocols;
     for (var i = 0; i < protocols_whitelist.length; i++) {
       var protocol = protocols_whitelist[i];
@@ -711,8 +703,7 @@ SockJS = function () {
       // Explorer had problems with that.
       try {
         iframe.onload = null;
-      } catch (x) {
-      }
+      } catch (x) {}
       iframe.onerror = null;
     };
     var cleanup = function cleanup() {
@@ -743,8 +734,7 @@ SockJS = function () {
         if (iframe && iframe.contentWindow) {
           iframe.contentWindow.postMessage(msg, origin);
         }
-      } catch (x) {
-      }
+      } catch (x) {}
       ;
     };
 
@@ -803,8 +793,7 @@ SockJS = function () {
         if (iframe && iframe.contentWindow) {
           iframe.contentWindow.postMessage(msg, origin);
         }
-      } catch (x) {
-      }
+      } catch (x) {}
       ;
     };
 
@@ -839,8 +828,7 @@ SockJS = function () {
    * ***** END LICENSE BLOCK *****
    */
 
-  var AbstractXHRObject = function AbstractXHRObject() {
-  };
+  var AbstractXHRObject = function AbstractXHRObject() {};
   AbstractXHRObject.prototype = new EventEmitter(['chunk', 'finish']);
 
   AbstractXHRObject.prototype._start = function (method, url, payload, opts) {
@@ -848,15 +836,13 @@ SockJS = function () {
 
     try {
       that.xhr = new XMLHttpRequest();
-    } catch (x) {
-    }
+    } catch (x) {}
     ;
 
     if (!that.xhr) {
       try {
         that.xhr = new _window.ActiveXObject('Microsoft.XMLHTTP');
-      } catch (x) {
-      }
+      } catch (x) {}
       ;
     }
     if (_window.ActiveXObject || _window.XDomainRequest) {
@@ -900,8 +886,7 @@ SockJS = function () {
             try {
               var status = x.status;
               var text = x.responseText;
-            } catch (x) {
-            }
+            } catch (x) {}
             ;
             // IE returns 1223 for 204: http://bugs.jquery.com/ticket/1450
             if (status === 1223) status = 204;
@@ -931,14 +916,12 @@ SockJS = function () {
     utils.unload_del(that.unload_ref);
 
     // IE needs this field to be a function
-    that.xhr.onreadystatechange = function () {
-    };
+    that.xhr.onreadystatechange = function () {};
 
     if (abort) {
       try {
         that.xhr.abort();
-      } catch (x) {
-      }
+      } catch (x) {}
       ;
     }
     that.unload_ref = that.xhr = null;
@@ -952,7 +935,7 @@ SockJS = function () {
 
   var XHRCorsObject = utils.XHRCorsObject = function () {
     var that = this,
-      args = arguments;
+        args = arguments;
     utils.delay(function () {
       that._start.apply(that, args);
     });
@@ -1018,8 +1001,7 @@ SockJS = function () {
     if (abort) {
       try {
         that.xdr.abort();
-      } catch (x) {
-      }
+      } catch (x) {}
       ;
     }
     that.unload_ref = that.xdr = null;
@@ -1067,7 +1049,7 @@ SockJS = function () {
     }
 
     var that = this,
-      protocols_whitelist;
+        protocols_whitelist;
     that._options = {
       devel: false, debug: false, protocols_whitelist: [],
       info: undefined, rtt: undefined
@@ -1376,8 +1358,7 @@ SockJS = function () {
    * ***** END LICENSE BLOCK *****
    */
 
-  var BufferedSender = function BufferedSender() {
-  };
+  var BufferedSender = function BufferedSender() {};
   BufferedSender.prototype.send_constructor = function (sender) {
     var that = this;
     that.send_buffer = [];
@@ -1574,8 +1555,7 @@ SockJS = function () {
           try {
             // In IE, actually execute the script.
             script.onclick();
-          } catch (x) {
-          }
+          } catch (x) {}
         }
         if (script) {
           close_script(utils.closeFrame(1006, "JSONP script loaded abnormally (onreadystatechange)"));
@@ -1601,8 +1581,7 @@ SockJS = function () {
         try {
           script.htmlFor = script.id;
           script.event = "onclick";
-        } catch (x) {
-        }
+        } catch (x) {}
         script.async = true;
       } else {
         // Opera, second sync script hack
@@ -1745,8 +1724,7 @@ SockJS = function () {
    * ***** END LICENSE BLOCK *****
    */
 
-  var AjaxBasedTransport = function AjaxBasedTransport() {
-  };
+  var AjaxBasedTransport = function AjaxBasedTransport() {};
   AjaxBasedTransport.prototype = new BufferedSender();
 
   AjaxBasedTransport.prototype.run = function (ri, trans_url, url_suffix, Receiver, AjaxObject) {
@@ -1841,8 +1819,7 @@ SockJS = function () {
   //    http://msdn.microsoft.com/en-us/library/cc197015(v=VS.85).aspx
   //    http://stevesouders.com/misc/test-postmessage.php
 
-  var IframeTransport = function IframeTransport() {
-  };
+  var IframeTransport = function IframeTransport() {};
 
   IframeTransport.prototype.i_constructor = function (ri, trans_url, base_url) {
     var that = this;
@@ -1876,8 +1853,7 @@ SockJS = function () {
         if (that.iframeObj.iframe.contentWindow) {
           that.postMessage('c');
         }
-      } catch (x) {
-      }
+      } catch (x) {}
       that.iframeObj.cleanup();
       that.iframeObj = null;
       that.onmessage_cb = that.iframeObj = null;
@@ -1941,8 +1917,7 @@ SockJS = function () {
     }
   };
 
-  var FacadeJS = function FacadeJS() {
-  };
+  var FacadeJS = function FacadeJS() {};
   FacadeJS.prototype._didClose = function (code, reason) {
     postMessage('t', utils.closeFrame(code, reason));
   };
@@ -2068,7 +2043,7 @@ SockJS = function () {
         if (typeof r === 'string' && r.substr(0, 1) === 'm') {
           var d = JSON.parse(r.substr(1));
           var info = d[0],
-            rtt = d[1];
+              rtt = d[1];
           that.emit('finish', info, rtt);
         } else {
           that.emit('finish');
@@ -2131,8 +2106,7 @@ SockJS = function () {
       ri._didClose();
     };
   };
-  WInfoReceiverIframe.prototype.doCleanup = function () {
-  };
+  WInfoReceiverIframe.prototype.doCleanup = function () {};
   //         [*] End of lib/info.js
 
 
@@ -2348,8 +2322,7 @@ SockJS = function () {
       if ('ActiveXObject' in _window) {
         try {
           _is_ie_htmlfile_capable = !!new ActiveXObject('htmlfile');
-        } catch (x) {
-        }
+        } catch (x) {}
       } else {
         _is_ie_htmlfile_capable = false;
       }

@@ -1,4 +1,4 @@
-import { FETCH_GAME_NUMERO } from "../src/actions/index";
+import { FETCH_GAME_NUMERO } from "../actions/index";
 
 export default function (state = {}, action) {
 

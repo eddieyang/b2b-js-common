@@ -16,9 +16,9 @@ exports.default = function () {
       }
     case _index.ADD_DRAW:
       var _action$payload = action.payload,
-        gameCode = _action$payload.gameCode,
-        numero = _action$payload.numero,
-        winNo = _action$payload.winningNumber;
+          gameCode = _action$payload.gameCode,
+          numero = _action$payload.numero,
+          winNo = _action$payload.winningNumber;
 
       if (state.length && state[0].gameCode === gameCode) {
         return [{ gameCode: gameCode, numero: numero, winNo: winNo }].concat(_toConsumableArray(state));
@@ -28,17 +28,8 @@ exports.default = function () {
   return state;
 };
 
-var _index = require("../src/actions/index");
+var _index = require("../actions/index");
 
-function _toConsumableArray(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-    return arr2;
-  } else {
-    return Array.from(arr);
-  }
-}
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var INIT_STATE = [];

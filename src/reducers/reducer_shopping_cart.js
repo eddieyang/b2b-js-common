@@ -1,4 +1,4 @@
-import { ADD_TO_SHOPPING_CART } from "../src/actions/index";
+import { ADD_TO_SHOPPING_CART } from "../actions/index";
 
 const INIT_STATE = [];
 export default function (state = INIT_STATE, action) {

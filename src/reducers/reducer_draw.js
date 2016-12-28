@@ -1,4 +1,4 @@
-import { FETCH_DRAW, ADD_DRAW } from "../src/actions/index";
+import { FETCH_DRAW, ADD_DRAW } from "../actions/index";
 
 const INIT_STATE = [];
 export default function (state = INIT_STATE, action) {

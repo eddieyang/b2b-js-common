@@ -1,10 +1,6 @@
 "use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*
  * QUnit - A JavaScript Unit Testing Framework
@@ -34,8 +30,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       };
 
       var tests = id("qunit-tests"),
-        banner = id("qunit-banner"),
-        result = id("qunit-testresult");
+          banner = id("qunit-banner"),
+          result = id("qunit-testresult");
 
       if (tests) {
         tests.innerHTML = "";
@@ -78,8 +74,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
     test: function test(testName, expected, callback, async) {
       var name = testName,
-        testEnvironment,
-        testEnvironmentArg;
+          testEnvironment,
+          testEnvironmentArg;
 
       if (arguments.length === 2) {
         callback = expected;
@@ -103,10 +99,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         QUnit.testStart(testName);
 
         testEnvironment = extend({
-          setup: function setup() {
-          },
-          teardown: function teardown() {
-          }
+          setup: function setup() {},
+          teardown: function teardown() {}
         }, config.moduleTestEnvironment);
         if (testEnvironmentArg) {
           extend(testEnvironment, testEnvironmentArg);
@@ -166,8 +160,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
 
         var good = 0,
-          bad = 0,
-          tests = id("qunit-tests");
+            bad = 0,
+            tests = id("qunit-tests");
 
         config.stats.all += config.assertions.length;
         config.moduleStats.all += config.assertions.length;
@@ -198,7 +192,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
           addEvent(b, "click", function () {
             var next = b.nextSibling,
-              display = next.style.display;
+                display = next.style.display;
             next.style.display = display === "none" ? "block" : "none";
           });
 
@@ -206,7 +200,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             var target = e && e.target ? e.target : window.event.srcElement;
             if (target.nodeName.toLowerCase() === "strong") {
               var text = "",
-                node = target.firstChild;
+                  node = target.firstChild;
 
               while (node.nodeType === 3) {
                 text += node.nodeValue;
@@ -382,18 +376,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     },
 
     // Logging callbacks
-    done: function done(failures, total) {
-    },
-    log: function log(result, message) {
-    },
-    testStart: function testStart(name) {
-    },
-    testDone: function testDone(name, failures, total) {
-    },
-    moduleStart: function moduleStart(name, testEnvironment) {
-    },
-    moduleDone: function moduleDone(name, failures, total) {
-    }
+    done: function done(failures, total) {},
+    log: function log(result, message) {},
+    testStart: function testStart(name) {},
+    testDone: function testDone(name, failures, total) {},
+    moduleStart: function moduleStart(name, testEnvironment) {},
+    moduleDone: function moduleDone(name, failures, total) {}
   };
 
   // Backwards compatibility, deprecated
@@ -412,7 +400,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   // Load paramaters
   (function () {
     var location = window.location || { search: "", protocol: "file:" },
-      GETParams = location.search.slice(1).split('&');
+        GETParams = location.search.slice(1).split('&');
 
     for (var i = 0; i < GETParams.length; i++) {
       GETParams[i] = decodeURIComponent(GETParams[i]);
@@ -541,8 +529,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }
 
     var banner = id("qunit-banner"),
-      tests = id("qunit-tests"),
-      html = ['Tests completed in ', +new Date() - config.started, ' milliseconds.<br/>', '<span class="passed">', config.stats.all - config.stats.bad, '</span> tests of <span class="total">', config.stats.all, '</span> passed, <span class="failed">', config.stats.bad, '</span> failed.'].join('');
+        tests = id("qunit-tests"),
+        html = ['Tests completed in ', +new Date() - config.started, ' milliseconds.<br/>', '<span class="passed">', config.stats.all - config.stats.bad, '</span> tests of <span class="total">', config.stats.all, '</span> passed, <span class="failed">', config.stats.bad, '</span> failed.'].join('');
 
     if (banner) {
       banner.className = config.stats.bad ? "qunit-fail" : "qunit-pass";
@@ -566,7 +554,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
   function validTest(name) {
     var i = config.filters.length,
-      run = false;
+        run = false;
 
     if (!i) {
       return true;
@@ -574,7 +562,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
     while (i--) {
       var filter = config.filters[i],
-        not = filter.charAt(0) == '!';
+          not = filter.charAt(0) == '!';
 
       if (not) {
         filter = filter.slice(1);
@@ -781,8 +769,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         "regexp": function regexp(b, a) {
           return hoozit(b) === "regexp" && a.source === b.source && // the regex itself
-            a.global === b.global && // and its modifers (gmi) ...
-            a.ignoreCase === b.ignoreCase && a.multiline === b.multiline;
+          a.global === b.global && // and its modifers (gmi) ...
+          a.ignoreCase === b.ignoreCase && a.multiline === b.multiline;
         },
 
         // - skip when the property is a method of an instance (OOP)
@@ -819,7 +807,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           var i;
           var eq = true; // unless we can proove it
           var aProperties = [],
-            bProperties = []; // collection of strings
+              bProperties = []; // collection of strings
 
           // comparing constructors is more strict than using instanceof
           if (a.constructor !== b.constructor) {
@@ -859,16 +847,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }
 
       return function (a, b) {
-          if (a === b) {
-            return true; // catch the most you can
-          } else if (a === null || b === null || typeof a === "undefined" || typeof b === "undefined" || hoozit(a) !== hoozit(b)) {
-            return false; // don't lose time with error prone cases
-          } else {
-            return bindCallbacks(a, callbacks, [b, a]);
-          }
+        if (a === b) {
+          return true; // catch the most you can
+        } else if (a === null || b === null || typeof a === "undefined" || typeof b === "undefined" || hoozit(a) !== hoozit(b)) {
+          return false; // don't lose time with error prone cases
+        } else {
+          return bindCallbacks(a, callbacks, [b, a]);
+        }
 
-          // apply transition with (1..n) arguments
-        }(args[0], args[1]) && arguments.callee.apply(this, args.splice(1, args.length - 1));
+        // apply transition with (1..n) arguments
+      }(args[0], args[1]) && arguments.callee.apply(this, args.splice(1, args.length - 1));
     };
 
     return innerEquiv;
@@ -893,20 +881,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
     function join(pre, arr, post) {
       var s = jsDump.separator(),
-        base = jsDump.indent(),
-        inner = jsDump.indent(1);
+          base = jsDump.indent(),
+          inner = jsDump.indent(1);
       if (arr.join) arr = arr.join(',' + s + inner);
       if (!arr) return pre + post;
       return [pre, inner + arr, base + post].join(s);
     };
     function array(arr) {
       var i = arr.length,
-        ret = Array(i);
+          ret = Array(i);
       this.up();
       while (i--) {
         ret[i] = this.parse(arr[i]);
-      }
-      this.down();
+      }this.down();
       return join('[', ret, ']');
     };
 
@@ -982,7 +969,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         undefined: 'undefined',
         'function': function _function(fn) {
           var ret = 'function',
-            name = 'name' in fn ? fn.name : (reName.exec(fn) || [])[1]; //functions never have name in IE
+              name = 'name' in fn ? fn.name : (reName.exec(fn) || [])[1]; //functions never have name in IE
           if (name) ret += ' ' + name;
           ret += '(';
 
@@ -997,16 +984,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           this.up();
           for (var key in map) {
             ret.push(this.parse(key, 'key') + ': ' + this.parse(map[key]));
-          }
-          this.down();
+          }this.down();
           return join('{', ret, '}');
         },
         node: function node(_node) {
           var open = this.HTML ? '&lt;' : '<',
-            close = this.HTML ? '&gt;' : '>';
+              close = this.HTML ? '&gt;' : '>';
 
           var tag = _node.nodeName.toLowerCase(),
-            ret = open + tag;
+              ret = open + tag;
 
           for (var a in this.DOMAttrs) {
             var val = _node[this.DOMAttrs[a]];

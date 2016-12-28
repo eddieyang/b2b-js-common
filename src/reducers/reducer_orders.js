@@ -1,4 +1,4 @@
-import { ONE_CLICK_BET } from "../src/actions/index";
+import { ONE_CLICK_BET } from "../actions/index";
 
 const INIT_STATE = {};
 

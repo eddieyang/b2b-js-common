@@ -1,4 +1,4 @@
-import { FETCH_SERIES } from "../src/actions/index";
+import { FETCH_SERIES } from "../actions/index";
 import _ from 'lodash-compat';
 
 const INIT_STATE = [];

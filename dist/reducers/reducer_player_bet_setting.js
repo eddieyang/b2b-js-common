@@ -51,7 +51,7 @@ exports.default = function () {
   return state;
 };
 
-var _index = require('../src/actions/index');
+var _index = require('../actions/index');
 
 var _stakes_calculator = require('../utils/stakes_calculator');
 
@@ -61,8 +61,6 @@ var _ball_board_config = require('../configs/ball_board_config');
 
 var _immutable = require('immutable');
 
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var INIT_STATE = (0, _immutable.Map)({}).set('multiple', 1).set('stakes', 0).set('amount', 0).set('ballRows', []);
