@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.baseDomain = undefined;
+exports.apiPath = undefined;
 exports.getToken = getToken;
 exports.getMerchant = getMerchant;
 exports.getHeader = getHeader;
@@ -19,13 +19,13 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var baseDomain = exports.baseDomain = 'http://lott.dev1.com';
+var apiPath = exports.apiPath = '/api';
 
 var TCG = {
   login: function login(customerName, password) {
 
-    var ussUrl = baseDomain + '/uss/customer_sessions';
-    var lgwUrl = baseDomain + '/lgw/sessions';
+    var ussUrl = apiPath + '/uss/customer_sessions';
+    var lgwUrl = apiPath + '/lgw/sessions';
     var Merchant = '2000cai';
 
     var loginLgw = function loginLgw(id, token) {

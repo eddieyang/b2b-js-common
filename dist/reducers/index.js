@@ -3,8 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _redux = require("redux");
+exports.commonReducer = undefined;
 
 var _reducer_games = require("./reducer_games");
 
@@ -52,7 +51,7 @@ var _reducer_orders2 = _interopRequireDefault(_reducer_orders);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var rootReducer = (0, _redux.combineReducers)({
+var commonReducer = exports.commonReducer = {
   games: _reducer_games2.default,
   activeGame: _reducer_active_game2.default,
   gameSetting: _reducer_game_setting2.default,
@@ -64,6 +63,4 @@ var rootReducer = (0, _redux.combineReducers)({
   series: _reducer_series2.default,
   playerBetSetting: _reducer_player_bet_setting2.default,
   orders: _reducer_orders2.default
-});
-
-exports.default = rootReducer;
+};

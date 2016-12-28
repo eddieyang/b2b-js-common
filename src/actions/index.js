@@ -1,7 +1,6 @@
 import axios from 'axios';
 import numeral from "numeral";
-
-import { baseDomain } from '../common';
+import { apiPath } from '../common';
 import { getHeader } from '../common';
 
 export const FETCH_GAMES = 'FETCH_GAMES';
@@ -21,6 +20,10 @@ export const FETCH_HOT_GAP = 'FETCH_HOT_GAP';
 
 export const FETCH_SERIES = 'FETCH_SERIES';
 export const FETCH_GAME_SETTING = 'FETCH_GAME_SETTING';
+
+//bet history
+export const FETCH_BET_HISTORY = 'FETCH_BET_HISTORY';
+export const CANCEL_BET_ORDER = 'CANCEL_BET_ORDER';
 
 // bet toolbar action
 export const CHANGE_SERIES = 'CHANGE_SERIES';
@@ -48,7 +51,7 @@ export function selectPrizeMode(prizeModeId) {
 
 export function fetchGames() {
 
-  const request = axios.get(`${baseDomain}/lgw/games`, { headers: getHeader() });
+  const request = axios.get(`${apiPath}/lgw/games`, { headers: getHeader() });
 
   return {
     type: FETCH_GAMES,
@@ -58,7 +61,7 @@ export function fetchGames() {
 
 export function fetchDraw({ gameId }) {
 
-  const request = axios.get(`${baseDomain}/lgw/draw/${gameId}?page=0&size=10`, { headers: getHeader() });
+  const request = axios.get(`${apiPath}/lgw/draw/${gameId}?page=0&size=10`, { headers: getHeader() });
 
   return {
     type: FETCH_DRAW,
@@ -75,9 +78,7 @@ export function addDraw({ gameCode, numero, winningNumber }) {
 }
 
 export function fetchGameNumero({ gameId }) {
-
-  const request = axios.get(`${baseDomain}/lgw/numeros/near?gameId=${gameId}`, { headers: getHeader() });
-
+  const request = axios.get(`${apiPath}/lgw/numeros/near?gameId=${gameId}`, { headers: getHeader() });
   return {
     type: FETCH_GAME_NUMERO,
     payload: request
@@ -86,7 +87,7 @@ export function fetchGameNumero({ gameId }) {
 
 export function fetchPlayMenu({ gameId }) {
 
-  const request = axios.get(`${baseDomain}/lgw/games/${gameId}/play_menu`, { headers: getHeader() });
+  const request = axios.get(`${apiPath}/lgw/games/${gameId}/play_menu`, { headers: getHeader() });
 
   return {
     type: FETCH_PLAY_MENU,
@@ -115,9 +116,47 @@ export function toggleGap() {
   };
 }
 
+//TODO
+export function fetchBetHistory({ gameId }) {
+  if (!gameId) {
+    gameId = -1;
+  }
+  const request = axios.get(`${apiPath}/lgw/orders/today?gameId=${gameId}&page=0&size=50`, { headers: getHeader() });
+  return {
+    type: FETCH_BET_HISTORY,
+    payload: request
+  };
+}
+//TODO
+/*function getStuffSuccess(response) {
+ return {
+ type: 'GET_ME_STUFF_SUCCESS',
+ payload: response
+ }
+ }
+
+ function getStuffError(err) {
+ return {
+ type: 'GET_ME_STUFF_ERROR',
+ payload: err
+ }
+ }
+ .then((response) =>
+ dispatch(getStuffSuccess(response)) )
+ .catch((err) => {
+ dispatch(getStuffError(err))
+ });
+ */
+export function cancelBetOrder(orderID = []) {
+  const request = axios.put(`${apiPath}/lgw/orders/suborders/cancel`, orderID, { headers: getHeader() });
+  return {
+    type: CANCEL_BET_ORDER,
+    payload: request
+  };
+}
 export function fetchHotGap({ gameId }) {
 
-  const request = axios.get(`${baseDomain}/lgw/draw/${gameId}/hot_gap_info`, { headers: getHeader() });
+  const request = axios.get(`${apiPath}/lgw/draw/${gameId}/hot_gap_info`, { headers: getHeader() });
 
   return {
     type: FETCH_HOT_GAP,
@@ -128,7 +167,7 @@ export function fetchHotGap({ gameId }) {
 
 export function fetchSeries() {
 
-  const request = axios.get(`${baseDomain}/lgw/customers/series`, { headers: getHeader() });
+  const request = axios.get(`${apiPath}/lgw/customers/series`, { headers: getHeader() });
 
   return {
     type: FETCH_SERIES,
@@ -138,7 +177,7 @@ export function fetchSeries() {
 
 export function fetchGameSetting({ gameId }) {
 
-  const request = axios.get(`${baseDomain}/lgw/games/${gameId}/setting`, { headers: getHeader() });
+  const request = axios.get(`${apiPath}/lgw/games/${gameId}/setting`, { headers: getHeader() });
 
   return {
     type: FETCH_GAME_SETTING,
@@ -217,7 +256,7 @@ export function oneClickBet({ game, currentNumero, playMenu, prizeModeId, series
     prizeModeId,
     bettingSlipString
   };
-  const request = axios.post(`${baseDomain}/lgw/orders/betting`, data, { headers: getHeader() });
+  const request = axios.post(`${apiPath}/lgw/orders/betting`, data, { headers: getHeader() });
   return {
     type: ONE_CLICK_BET,
     payload: request

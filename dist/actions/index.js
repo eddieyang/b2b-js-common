@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ADD_TO_SHOPPING_CART = exports.ONE_CLICK_BET = exports.BET_FINISH = exports.CALCULATE_STAKES = exports.CHANGE_BET_MULTIPLE = exports.CHANGE_BET_MODE = exports.CHANGE_SERIES = exports.FETCH_GAME_SETTING = exports.FETCH_SERIES = exports.FETCH_HOT_GAP = exports.TOGGLE_GAP = exports.TOGGLE_HOT = exports.PLAY_MENU_SELECTED = exports.FETCH_PLAY_MENU = exports.FETCH_GAME_NUMERO = exports.ADD_DRAW = exports.FETCH_DRAW = exports.PRIZE_MODE_SELECTED = exports.GAME_SELECTED = exports.FETCH_GAMES = undefined;
+exports.ADD_TO_SHOPPING_CART = exports.ONE_CLICK_BET = exports.BET_FINISH = exports.CALCULATE_STAKES = exports.CHANGE_BET_MULTIPLE = exports.CHANGE_BET_MODE = exports.CHANGE_SERIES = exports.CANCEL_BET_ORDER = exports.FETCH_BET_HISTORY = exports.FETCH_GAME_SETTING = exports.FETCH_SERIES = exports.FETCH_HOT_GAP = exports.TOGGLE_GAP = exports.TOGGLE_HOT = exports.PLAY_MENU_SELECTED = exports.FETCH_PLAY_MENU = exports.FETCH_GAME_NUMERO = exports.ADD_DRAW = exports.FETCH_DRAW = exports.PRIZE_MODE_SELECTED = exports.GAME_SELECTED = exports.FETCH_GAMES = undefined;
 exports.selectGame = selectGame;
 exports.selectPrizeMode = selectPrizeMode;
 exports.fetchGames = fetchGames;
@@ -14,6 +14,8 @@ exports.fetchPlayMenu = fetchPlayMenu;
 exports.selectPlayMenu = selectPlayMenu;
 exports.toggleHot = toggleHot;
 exports.toggleGap = toggleGap;
+exports.fetchBetHistory = fetchBetHistory;
+exports.cancelBetOrder = cancelBetOrder;
 exports.fetchHotGap = fetchHotGap;
 exports.fetchSeries = fetchSeries;
 exports.fetchGameSetting = fetchGameSetting;
@@ -55,6 +57,10 @@ var FETCH_HOT_GAP = exports.FETCH_HOT_GAP = 'FETCH_HOT_GAP';
 var FETCH_SERIES = exports.FETCH_SERIES = 'FETCH_SERIES';
 var FETCH_GAME_SETTING = exports.FETCH_GAME_SETTING = 'FETCH_GAME_SETTING';
 
+//bet history
+var FETCH_BET_HISTORY = exports.FETCH_BET_HISTORY = 'FETCH_BET_HISTORY';
+var CANCEL_BET_ORDER = exports.CANCEL_BET_ORDER = 'CANCEL_BET_ORDER';
+
 // bet toolbar action
 var CHANGE_SERIES = exports.CHANGE_SERIES = 'CHANGE_SERIES';
 var CHANGE_BET_MODE = exports.CHANGE_BET_MODE = 'CHANGE_BET_MODE';
@@ -81,7 +87,7 @@ function selectPrizeMode(prizeModeId) {
 
 function fetchGames() {
 
-  var request = _axios2.default.get(_common.baseDomain + '/lgw/games', { headers: (0, _common.getHeader)() });
+  var request = _axios2.default.get(_common.apiPath + '/lgw/games', { headers: (0, _common.getHeader)() });
 
   return {
     type: FETCH_GAMES,
@@ -93,7 +99,7 @@ function fetchDraw(_ref) {
   var gameId = _ref.gameId;
 
 
-  var request = _axios2.default.get(_common.baseDomain + '/lgw/draw/' + gameId + '?page=0&size=10', { headers: (0, _common.getHeader)() });
+  var request = _axios2.default.get(_common.apiPath + '/lgw/draw/' + gameId + '?page=0&size=10', { headers: (0, _common.getHeader)() });
 
   return {
     type: FETCH_DRAW,
@@ -116,9 +122,7 @@ function addDraw(_ref2) {
 function fetchGameNumero(_ref3) {
   var gameId = _ref3.gameId;
 
-
-  var request = _axios2.default.get(_common.baseDomain + '/lgw/numeros/near?gameId=' + gameId, { headers: (0, _common.getHeader)() });
-
+  var request = _axios2.default.get(_common.apiPath + '/lgw/numeros/near?gameId=' + gameId, { headers: (0, _common.getHeader)() });
   return {
     type: FETCH_GAME_NUMERO,
     payload: request
@@ -129,7 +133,7 @@ function fetchPlayMenu(_ref4) {
   var gameId = _ref4.gameId;
 
 
-  var request = _axios2.default.get(_common.baseDomain + '/lgw/games/' + gameId + '/play_menu', { headers: (0, _common.getHeader)() });
+  var request = _axios2.default.get(_common.apiPath + '/lgw/games/' + gameId + '/play_menu', { headers: (0, _common.getHeader)() });
 
   return {
     type: FETCH_PLAY_MENU,
@@ -157,11 +161,53 @@ function toggleGap() {
   };
 }
 
-function fetchHotGap(_ref5) {
+//TODO
+function fetchBetHistory(_ref5) {
   var gameId = _ref5.gameId;
 
+  if (!gameId) {
+    gameId = -1;
+  }
+  var request = _axios2.default.get(_common.apiPath + '/lgw/orders/today?gameId=' + gameId + '&page=0&size=50', { headers: (0, _common.getHeader)() });
+  return {
+    type: FETCH_BET_HISTORY,
+    payload: request
+  };
+}
+//TODO
+/*function getStuffSuccess(response) {
+ return {
+ type: 'GET_ME_STUFF_SUCCESS',
+ payload: response
+ }
+ }
 
-  var request = _axios2.default.get(_common.baseDomain + '/lgw/draw/' + gameId + '/hot_gap_info', { headers: (0, _common.getHeader)() });
+ function getStuffError(err) {
+ return {
+ type: 'GET_ME_STUFF_ERROR',
+ payload: err
+ }
+ }
+ .then((response) =>
+ dispatch(getStuffSuccess(response)) )
+ .catch((err) => {
+ dispatch(getStuffError(err))
+ });
+ */
+function cancelBetOrder() {
+  var orderID = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+  var request = _axios2.default.put(_common.apiPath + '/lgw/orders/suborders/cancel', orderID, { headers: (0, _common.getHeader)() });
+  return {
+    type: CANCEL_BET_ORDER,
+    payload: request
+  };
+}
+function fetchHotGap(_ref6) {
+  var gameId = _ref6.gameId;
+
+
+  var request = _axios2.default.get(_common.apiPath + '/lgw/draw/' + gameId + '/hot_gap_info', { headers: (0, _common.getHeader)() });
 
   return {
     type: FETCH_HOT_GAP,
@@ -171,7 +217,7 @@ function fetchHotGap(_ref5) {
 
 function fetchSeries() {
 
-  var request = _axios2.default.get(_common.baseDomain + '/lgw/customers/series', { headers: (0, _common.getHeader)() });
+  var request = _axios2.default.get(_common.apiPath + '/lgw/customers/series', { headers: (0, _common.getHeader)() });
 
   return {
     type: FETCH_SERIES,
@@ -179,11 +225,11 @@ function fetchSeries() {
   };
 }
 
-function fetchGameSetting(_ref6) {
-  var gameId = _ref6.gameId;
+function fetchGameSetting(_ref7) {
+  var gameId = _ref7.gameId;
 
 
-  var request = _axios2.default.get(_common.baseDomain + '/lgw/games/' + gameId + '/setting', { headers: (0, _common.getHeader)() });
+  var request = _axios2.default.get(_common.apiPath + '/lgw/games/' + gameId + '/setting', { headers: (0, _common.getHeader)() });
 
   return {
     type: FETCH_GAME_SETTING,
@@ -239,16 +285,16 @@ function betFinish() {
   };
 }
 
-function oneClickBet(_ref7) {
-  var game = _ref7.game,
-      currentNumero = _ref7.currentNumero,
-      playMenu = _ref7.playMenu,
-      prizeModeId = _ref7.prizeModeId,
-      series = _ref7.series,
-      mode = _ref7.mode,
-      multiple = _ref7.multiple,
-      amount = _ref7.amount,
-      ballRows = _ref7.ballRows;
+function oneClickBet(_ref8) {
+  var game = _ref8.game,
+      currentNumero = _ref8.currentNumero,
+      playMenu = _ref8.playMenu,
+      prizeModeId = _ref8.prizeModeId,
+      series = _ref8.series,
+      mode = _ref8.mode,
+      multiple = _ref8.multiple,
+      amount = _ref8.amount,
+      ballRows = _ref8.ballRows;
 
 
   var gameId = game.gameId;
@@ -279,7 +325,7 @@ function oneClickBet(_ref7) {
     prizeModeId: prizeModeId,
     bettingSlipString: bettingSlipString
   };
-  var request = _axios2.default.post(_common.baseDomain + '/lgw/orders/betting', data, { headers: (0, _common.getHeader)() });
+  var request = _axios2.default.post(_common.apiPath + '/lgw/orders/betting', data, { headers: (0, _common.getHeader)() });
   return {
     type: ONE_CLICK_BET,
     payload: request
@@ -287,14 +333,14 @@ function oneClickBet(_ref7) {
 }
 
 // TODO ssc or 11x5 球號顯示格式
-function addToShoppingCart(_ref8) {
-  var series = _ref8.series,
-      playMenu = _ref8.playMenu,
-      mode = _ref8.mode,
-      multiple = _ref8.multiple,
-      ballRows = _ref8.ballRows,
-      stakes = _ref8.stakes,
-      amount = _ref8.amount;
+function addToShoppingCart(_ref9) {
+  var series = _ref9.series,
+      playMenu = _ref9.playMenu,
+      mode = _ref9.mode,
+      multiple = _ref9.multiple,
+      ballRows = _ref9.ballRows,
+      stakes = _ref9.stakes,
+      amount = _ref9.amount;
 
 
   var playId = playMenu.playId;

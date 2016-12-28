@@ -530,8 +530,39 @@ const LANG = {
     "play_id_1613@2": '至少选择2个二重号码，竞猜开奖号码的后四位，号码一致顺序不限，即为中奖。例：投注方案：二重号28开奖号码：*2288（顺序不限）',
     "play_id_1614@1": '至少选择1个三重号码和1个单号号码，竞猜开奖号码的后四位，号码一致顺序不限，即为中奖。例：投注方案：三重号8，单号2中奖号码：*8882（顺序不限）',
     "play_id_1614@2": '至少选择1个三重号码和1个单号号码，竞猜开奖号码的后四位，号码一致顺序不限，即为中奖。例：投注方案：三重号8，单号2中奖号码：*8882（顺序不限）'
-  }
+  },
 
+  orderStatus: {
+    "orderStatus": "状态",
+    "orderStatus_All": "全部",
+    "orderStatus_2": "进行中",
+    "orderStatus_4": "已中奖",
+    "orderStatus_5": "未中奖",
+    "orderStatus_6": "追中撤单",
+    "orderStatus_7": "出号撤单",
+    "orderStatus_8": "个人撤单",
+    "orderStatus_12": "空开撤单",
+    "orderStatus_NotDrawYet": "进行中",
+    "orderStatus_Winning": "已中奖",
+    "orderStatus_NotWinning": "未中奖",
+    "orderStatus_WinningDrawback": "中奖停止",
+    "orderStatus_ShownDrawback": "出号撤单",
+    "orderStatus_PlayerDrawback": "个人撤单",
+    "orderStatus_EmptyDrawDrawback": "空开撤单"
+  },
+
+  "drawDrawback": "撤单",
+  "gameHistoryCancel": "确定撤单？",
+  "LGS_CANCEL_ORDER_NOT_AVAILABLE": "订单已经锁定，无法撤单",
+  "gameHistoryCancel_failed": "UNKNOWN_ERROR",
+  "gameHistoryCancel_success": "撤单成功",
+  "gameType": "游戏类型",
+  "orderNumber": "订单编号",
+  "bettingTime": "投注时间",
+  "numero": "游戏奖期",
+  "winningNumber": "开奖号码",
+  "planBettingAmount": "投注金额(元)",
+  "winningAmount": "中奖金额(元)"
 };
 
 export default LANG;

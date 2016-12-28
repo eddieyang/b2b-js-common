@@ -1,14 +1,14 @@
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
-export const baseDomain = 'http://lott.dev1.com';
+export const apiPath = '/api';
 
 let TCG = {
 
   login (customerName, password) {
 
-    const ussUrl = `${baseDomain}/uss/customer_sessions`;
-    const lgwUrl = `${baseDomain}/lgw/sessions`;
+    const ussUrl = `${apiPath}/uss/customer_sessions`;
+    const lgwUrl = `${apiPath}/lgw/sessions`;
     const Merchant = '2000cai';
 
     const loginLgw = (id, token) => {

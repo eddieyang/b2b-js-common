@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 import GameReducer from "./reducer_games";
 import DrawReducer from "./reducer_draw";
 import GameNumeroReducer from "./reducer_game_numero";
@@ -12,7 +10,7 @@ import GameSettingReducer from "./reducer_game_setting";
 import PlayerBetSetting from "./reducer_player_bet_setting";
 import OrderReducer from "./reducer_orders";
 
-const rootReducer = combineReducers({
+export const commonReducer = {
   games: GameReducer,
   activeGame: ActiveGame,
   gameSetting: GameSettingReducer,
@@ -24,6 +22,4 @@ const rootReducer = combineReducers({
   series: SeriesReducer,
   playerBetSetting: PlayerBetSetting,
   orders: OrderReducer
-});
-
-export default rootReducer;
+};
